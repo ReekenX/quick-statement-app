@@ -47,7 +47,7 @@ export const actions = {
     context.commit('setStatement', statement)
 
     // Process using API
-    const { data } = await this.$axios.post('/api/analyse', { statement })
+    const { data } = await this.$axios.post('/analyse', { statement })
     data.forEach((entry) => {
       if (entry.category) {
         context.commit('setStatementCategory', {
@@ -63,7 +63,7 @@ export const actions = {
     const statement = context.state.statement.filter(
       ({ category }) => !!category
     )
-    await this.$axios.post('/api/store', { statement })
+    await this.$axios.post('/store', { statement })
 
     // Cleanup for the UI
     context.commit('setStatement', null)
@@ -72,7 +72,7 @@ export const actions = {
   async report(context, dateParams) {
     // Get report from the API
     const { year, month } = dateParams
-    const { data } = await this.$axios.get(`/api/reports/${year}/${month}`)
+    const { data } = await this.$axios.get(`/reports/${year}/${month}`)
 
     // Cleanup for the UI
     context.commit('setReport', data)
@@ -80,7 +80,7 @@ export const actions = {
 
   async years(context) {
     // Get report from the API
-    const { data } = await this.$axios.get('/api/years')
+    const { data } = await this.$axios.get('/years')
 
     // Cleanup for the UI
     context.commit('setYears', data)
@@ -88,7 +88,7 @@ export const actions = {
 
   async months(context, { year }) {
     // Get report from the API
-    const { data } = await this.$axios.get(`/api/years/${year}`)
+    const { data } = await this.$axios.get(`/years/${year}`)
 
     // Cleanup for the UI
     context.commit('setMonths', { year, months: data })
