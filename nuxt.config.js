@@ -48,7 +48,8 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/pwa'
   ],
 
   /*
@@ -63,7 +64,7 @@ export default {
   proxy: {
     '/api': {
       target: process.env.API_URL || 'http://localhost:8000',
-      pathRewrite: { '/api': '/' },
+      pathRewrite: { '/api': '' },
       secure: false
     }
   },
