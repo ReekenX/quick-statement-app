@@ -52,6 +52,20 @@ export default {
     '@nuxtjs/pwa'
   ],
 
+  pwa: {
+    manifest: {
+      name: 'Quick Statement',
+      short_name: 'Quick Statement',
+      lang: 'lt',
+      background_color: 'white',
+      theme_color: 'white'
+    },
+
+    meta: {
+      name: 'Quick Statement'
+    }
+  },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
