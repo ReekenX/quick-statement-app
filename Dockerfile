@@ -1,8 +1,6 @@
 FROM node:11.13.0-alpine
 
 # Setup env
-ARG API_URL
-ENV API_URL $API_URL
 ENV APP_HOME /project
 WORKDIR $APP_HOME
 

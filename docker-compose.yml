@@ -3,9 +3,12 @@ version: '3'
 services:
   quick-statement-app:
     container_name: quick-statement-app
-    build:
-      context: .
-      args:
-        API_URL: http://localhost:8000
+    build: .
     ports:
       - 0.0.0.0:3000:3000
+    networks:
+      - quick-statement-net
+
+networks:
+  quick-statement-net:
+    driver: bridge
