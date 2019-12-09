@@ -64,7 +64,7 @@ export default {
 
   head() {
     return {
-      title: this.$t('Welcome')
+      titleTemplate: this.$t('Quick Statement')
     }
   }
 }
