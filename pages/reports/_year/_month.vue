@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto py-4 px-4 bg-white">
+  <div class="container mx-auto py-4 px-2 bg-white">
     <div class="md:flex md:flex-wrap">
       <div class="md:w-1/2 lg:w-1/4 mb-2 px-2">
         <div class="bg-blue-600 text-white rounded p-4">
@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <h2 class="px-2 text-2xl font-bold text-gray-800 mb-4 mt-8">
+    <h2 class="text-2xl font-bold text-gray-800 mt-4 px-2">
       {{ $t('Income Categories') }}
     </h2>
 
@@ -63,7 +63,7 @@
       </div>
     </div>
 
-    <h2 class="px-2 text-2xl font-bold text-gray-800 mb-4 mt-8">
+    <h2 class="text-2xl font-bold text-gray-800 mt-4 px-2">
       {{ $t('Expense Categories') }}
     </h2>
 

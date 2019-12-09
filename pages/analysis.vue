@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto py-4 px-4 bg-white">
+  <div class="container mx-auto py-4 px-2 bg-white">
     <h1 class="text-2xl font-bold px-2 mb-4 text-gray-800">
       {{ $t('Statement Analysis') }}
     </h1>
