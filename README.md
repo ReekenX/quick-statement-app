@@ -18,27 +18,21 @@ Built with TailwindCSS so wrote just 2 lines of CSS. Mobile first APP.
 
 ![Reports Detail Page](screenshots/v1.0/reports_detail.png)
 
-## Launch Quickly
-
-Launch project with Docker:
-
-  docker-compose up --build
-
-It will be available on your browser on `localhost:3000`.
-
 ## Installing
 
-``` bash
-# install dependencies
-$ npm run install
+In order to launch this project you will need Docker with Docker Compose.
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+Setup and launch API project:
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+    git clone https://github.com/ReekenX/quick-statement-api.git
+    cd quick-statement-api
+    docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 
-# generate static project
-$ npm run generate
-```
+Setup and launch APP project:
+
+    git clone https://github.com/ReekenX/quick-statement-app.git
+    cd quick-statement-app
+    docker-compose up --build
+
+After a minute or two project will be up and running on `http://localhost:3000`.
+
