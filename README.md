@@ -1,10 +1,14 @@
 # Quick Statement App
 
-App built with Vue to quickly record income/expenses for every month.
+Upload bank statement (CSV file) and it will be automatically matched/mapped to specific categories (food, kids stuff, clothes and etc.). And of course, once in a while - see generated reports where you spend most, what earns the most.
 
-Once you upload your bank statement CSV file, then [API](https://github.com/ReekenX/quick-statement-api) will analyze it and will map every line to some category. At first you will have to do this manually (for first statement or part of first statement). This API learns over time and improves its accuracy to bind categories on its own.
+## Tech Stack
 
-Built with NuxtJS so supports server side rendering.
+NuxtJS used to get server sider rendering. It's great framework for quickly building tools like this.
+
+Lib Papa Parse was used for quick CSV files reading and filtering.
+
+App can be localized, thanks to vue-18n.
 
 Built with TailwindCSS so wrote just 2 lines of CSS. Mobile first APP.
 
