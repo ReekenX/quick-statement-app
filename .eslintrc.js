@@ -19,6 +19,6 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    'no-console': ['error', { allow: ['warn', 'error'] }]
+    'no-console': ['warn', { allow: ['warn', 'error'] }]
   }
 }
