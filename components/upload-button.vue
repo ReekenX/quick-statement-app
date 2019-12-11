@@ -17,7 +17,9 @@
         fill="currentColor"
       />
     </svg>
+
     {{ $t('Upload Statement') }}
+
     <input
       ref="file"
       @change="onFileAdd($event.target.files[0])"

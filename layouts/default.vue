@@ -1,11 +1,13 @@
 <template>
   <div class="h-screen flex flex-col">
     <div class="bg-blue-600">
-      <div class="container mx-auto">
-        <nav class="flex items-center justify-between flex-wrap p-6">
+      <div class="container mx-auto text-md">
+        <nav
+          class="flex items-center flex-wrap p-6 justify-center sm:justify-between"
+        >
           <nuxt-link
             :to="{ name: 'index' }"
-            class="flex items-center flex-shrink-0 text-white mr-6 no-underline"
+            class="flex items-center flex-shrink-0 text-white mr-6 no-underline text-lg"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -32,38 +34,27 @@
                 d="M7.5.75a1.5 1.5 0 1 1-.001 3.001A1.5 1.5 0 0 1 7.5.75zm0-.75a2.25 2.25 0 1 0 0 4.5a2.25 2.25 0 0 0 0-4.5z"
               />
             </svg>
-            <span class="font-normal text-xl">{{ $t('Quick Statement') }}</span>
+            <span class="font-normal">{{ $t('Quick Statement') }}</span>
           </nuxt-link>
-          <div
-            v-if="$store.state.authorized"
-            class="lg:flex-grow lg:flex lg:items-center lg:w-auto"
-          >
-            <div class="text-lg lg:flex-grow">
+          <div class="hidden sm:flex sm:flex-grow sm:items-center sm:w-auto">
+            <div v-if="$store.state.authorized" class="flex flex-grow w-auto">
               <div>
                 <nuxt-link
                   :to="{ name: 'index' }"
-                  class="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4 no-underline hidden lg:inline-block"
+                  class="block mt-4 sm:inline-block sm:mt-0 text-teal-100 hover:text-white mr-4 no-underline hidden sm:inline-block"
                 >
                   {{ $t('Homepage') }}
                 </nuxt-link>
                 <nuxt-link
                   :to="{ name: 'reports' }"
-                  class="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4 no-underline hidden lg:inline-block"
+                  class="block mt-4 sm:inline-block sm:mt-0 text-teal-100 hover:text-white mr-4 no-underline hidden sm:inline-block"
                 >
                   {{ $t('Reports') }}
                 </nuxt-link>
               </div>
             </div>
-            <div>
+            <div v-if="$store.state.authorized">
               <upload-button
-                class="inline-block font-medium px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white"
-              />
-            </div>
-          </div>
-          <div v-if="!$store.state.authorized" class="flex items-center w-auto">
-            <div class="text-lg lg:flex-grow"></div>
-            <div>
-              <authorize-button
                 class="inline-block font-medium px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white"
               />
             </div>
@@ -78,12 +69,10 @@
 
 <script>
 import UploadButton from '@/components/upload-button'
-import AuthorizeButton from '@/components/authorize-button'
 
 export default {
   components: {
-    UploadButton,
-    AuthorizeButton
+    UploadButton
   }
 }
 </script>
