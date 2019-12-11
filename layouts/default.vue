@@ -34,9 +34,12 @@
             </svg>
             <span class="font-normal text-xl">{{ $t('Quick Statement') }}</span>
           </nuxt-link>
-          <div class="lg:flex-grow lg:flex lg:items-center lg:w-auto">
+          <div
+            v-if="$store.state.authorized"
+            class="lg:flex-grow lg:flex lg:items-center lg:w-auto"
+          >
             <div class="text-lg lg:flex-grow">
-              <div v-if="$store.state.authorized">
+              <div>
                 <nuxt-link
                   :to="{ name: 'index' }"
                   class="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4 no-underline hidden lg:inline-block"
