@@ -2,9 +2,7 @@
   <div class="h-screen flex flex-col">
     <div class="bg-blue-600">
       <div class="container mx-auto">
-        <nav
-          class="flex items-center justify-center lg:justify-between flex-wrap p-6"
-        >
+        <nav class="flex items-center justify-between flex-wrap p-6">
           <nuxt-link
             :to="{ name: 'index' }"
             class="flex items-center flex-shrink-0 text-white mr-6 no-underline"
@@ -36,38 +34,34 @@
             </svg>
             <span class="font-normal text-xl">{{ $t('Quick Statement') }}</span>
           </nuxt-link>
-          <div
-            v-if="$store.state.authorized"
-            class="hidden flex-grow lg:flex lg:items-center lg:w-auto"
-          >
+          <div class="lg:flex-grow lg:flex lg:items-center lg:w-auto">
             <div class="text-lg lg:flex-grow">
-              <nuxt-link
-                :to="{ name: 'index' }"
-                class="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4 no-underline"
-              >
-                {{ $t('Homepage') }}
-              </nuxt-link>
-              <nuxt-link
-                :to="{ name: 'reports' }"
-                class="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4 no-underline"
-              >
-                {{ $t('Reports') }}
-              </nuxt-link>
+              <div v-if="$store.state.authorized">
+                <nuxt-link
+                  :to="{ name: 'index' }"
+                  class="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4 no-underline hidden lg:inline-block"
+                >
+                  {{ $t('Homepage') }}
+                </nuxt-link>
+                <nuxt-link
+                  :to="{ name: 'reports' }"
+                  class="block mt-4 lg:inline-block lg:mt-0 text-teal-100 hover:text-white mr-4 no-underline hidden lg:inline-block"
+                >
+                  {{ $t('Reports') }}
+                </nuxt-link>
+              </div>
             </div>
             <div>
               <upload-button
-                class="inline-block font-medium px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+                class="inline-block font-medium px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white"
               />
             </div>
           </div>
-          <div
-            v-else
-            class="hidden flex-grow lg:flex lg:items-center lg:w-auto"
-          >
+          <div v-if="!$store.state.authorized" class="flex items-center w-auto">
             <div class="text-lg lg:flex-grow"></div>
             <div>
               <authorize-button
-                class="inline-block font-medium px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+                class="inline-block font-medium px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white"
               />
             </div>
           </div>
