@@ -77,7 +77,10 @@ export default {
 
   proxy: {
     '/api': {
-      target: 'http://quick-statement-api:4000',
+      target:
+        process.env.NODE_ENV === 'production'
+          ? 'http://quick-statement-api:4000'
+          : 'http://localhost:8000',
       pathRewrite: { '/api': '' },
       secure: false
     }

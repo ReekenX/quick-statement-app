@@ -25,7 +25,7 @@
     </div>
 
     <category-dialog
-      v-if="categoryDialogVisible"
+      v-if="dialogVisible"
       :id="id"
       @close="onClose"
       @save="onClose"
@@ -55,14 +55,14 @@ export default {
 
   data() {
     return {
-      categoryDialogVisible: false,
+      dialogVisible: false,
       addNewLabel: this.$t('Add New...')
     }
   },
 
   methods: {
     showCategoryDialog() {
-      this.categoryDialogVisible = true
+      this.dialogVisible = true
     },
 
     onChange(event) {
@@ -78,7 +78,7 @@ export default {
     },
 
     onClose() {
-      this.categoryDialogVisible = false
+      this.dialogVisible = false
     }
   }
 }

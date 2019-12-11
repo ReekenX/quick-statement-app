@@ -21,7 +21,7 @@
         </h2>
       </div>
 
-      <div class="mt-4">
+      <div v-if="$store.state.authorized" class="mt-4">
         <upload-button
           class="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded md:w-auto items-center text-xl justify-center mx-1"
         />

@@ -5,7 +5,8 @@ export const state = () => ({
   categories: [],
   years: [],
   months: {},
-  report: null
+  report: null,
+  authorized: false
 })
 
 export const mutations = {
@@ -36,6 +37,10 @@ export const mutations = {
   setMonths(state, { year, months }) {
     state.months = {}
     state.months[year] = months
+  },
+
+  setAuthorized(state, authorized) {
+    state.authorized = authorized
   }
 }
 
@@ -66,7 +71,7 @@ export const actions = {
     await this.$axios.post('/store', { statement })
 
     // Cleanup for the UI
-    context.commit('setStatement', null)
+    return context.commit('setStatement', null)
   },
 
   async report(context, dateParams) {
@@ -75,7 +80,7 @@ export const actions = {
     const { data } = await this.$axios.get(`/reports/${year}/${month}`)
 
     // Cleanup for the UI
-    context.commit('setReport', data)
+    return context.commit('setReport', data)
   },
 
   async years(context) {
@@ -83,7 +88,7 @@ export const actions = {
     const { data } = await this.$axios.get('/years')
 
     // Cleanup for the UI
-    context.commit('setYears', data)
+    return context.commit('setYears', data)
   },
 
   async months(context, { year }) {
@@ -91,6 +96,40 @@ export const actions = {
     const { data } = await this.$axios.get(`/years/${year}`)
 
     // Cleanup for the UI
-    context.commit('setMonths', { year, months: data })
+    return context.commit('setMonths', { year, months: data })
+  },
+
+  async checkInMemoryToken(context) {
+    let authorized = false
+
+    if (localStorage.API_TOKEN) {
+      this.$axios.defaults.headers.common.Authorization = `Bearer ${localStorage.API_TOKEN}`
+
+      try {
+        await this.$axios.get('/check')
+        authorized = true
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    context.commit('setAuthorized', authorized)
+
+    return authorized
+  },
+
+  async registerToken(context, token) {
+    // Register API token to the browser "memory"
+    this.$axios.defaults.headers.common.Authorization = `Bearer ${token}`
+    localStorage.API_TOKEN = token
+
+    // Check if token is really valid (raises exception if not)
+    try {
+      await this.$axios.get('/check')
+      context.commit('setAuthorized', true)
+    } catch (e) {
+      console.error(e)
+      context.commit('setAuthorized', false)
+    }
   }
 }

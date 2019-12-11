@@ -36,7 +36,10 @@
             </svg>
             <span class="font-normal text-xl">{{ $t('Quick Statement') }}</span>
           </nuxt-link>
-          <div class="hidden flex-grow lg:flex lg:items-center lg:w-auto">
+          <div
+            v-if="$store.state.authorized"
+            class="hidden flex-grow lg:flex lg:items-center lg:w-auto"
+          >
             <div class="text-lg lg:flex-grow">
               <nuxt-link
                 :to="{ name: 'index' }"
@@ -57,6 +60,17 @@
               />
             </div>
           </div>
+          <div
+            v-else
+            class="hidden flex-grow lg:flex lg:items-center lg:w-auto"
+          >
+            <div class="text-lg lg:flex-grow"></div>
+            <div>
+              <authorize-button
+                class="inline-block font-medium px-5 py-3 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+              />
+            </div>
+          </div>
         </nav>
       </div>
     </div>
@@ -67,10 +81,12 @@
 
 <script>
 import UploadButton from '@/components/upload-button'
+import AuthorizeButton from '@/components/authorize-button'
 
 export default {
   components: {
-    UploadButton
+    UploadButton,
+    AuthorizeButton
   }
 }
 </script>
