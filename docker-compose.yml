@@ -4,8 +4,6 @@ services:
   quick-statement-app:
     container_name: quick-statement-app
     build: .
-    ports:
-      - 0.0.0.0:3000:3000
     networks:
       - quick-statement-net
 
