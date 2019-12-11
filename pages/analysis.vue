@@ -11,6 +11,8 @@
 import AnalysisTable from '@/components/analysis-table'
 
 export default {
+  middleware: 'authenticated',
+
   components: {
     AnalysisTable
   },

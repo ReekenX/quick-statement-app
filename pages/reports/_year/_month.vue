@@ -85,6 +85,8 @@
 
 <script>
 export default {
+  middleware: 'authenticated',
+
   head() {
     return {
       title: this.$t('{year}-{month} Reports', this.$route.params)

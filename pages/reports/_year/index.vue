@@ -55,6 +55,8 @@
 
 <script>
 export default {
+  middleware: 'authenticated',
+
   head() {
     return {
       title: this.$t('Reports')
